@@ -2,7 +2,7 @@ Summary:	An open source Linux client for Google Drive
 Summary(pl.UTF-8):	Linuksowy, mające otwarte źródła klient Google Drive
 Name:		grive2
 Version:	0.5.1
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/Networking
 #Source0Download: https://github.com/vitalif/grive2/releases
