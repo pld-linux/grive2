@@ -9,6 +9,7 @@ Group:		Applications/Networking
 Source0:	https://github.com/vitalif/grive2/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	2ffb02ae2ddaba51fc8f31bb322efd93
 Patch0:		binutils-2.34.patch
+Patch1:		missing-includes.patch
 URL:		https://github.com/vitalif/grive2
 BuildRequires:	binutils-devel
 BuildRequires:	boost-devel >= 1.40.0
@@ -36,6 +37,7 @@ Google Document List.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build

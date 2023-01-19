@@ -1,0 +1,66 @@
+diff --color -ur grive2-0.5.1.orig/grive/src/main.cc grive2-0.5.1/grive/src/main.cc
+--- grive2-0.5.1.orig/grive/src/main.cc	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/grive/src/main.cc	2023-01-19 13:52:25.011116324 +0100
+@@ -44,6 +44,7 @@
+ #include <cassert>
+ #include <cstdlib>
+ #include <iostream>
++#include <memory>
+ #include <unistd.h>
+ 
+ const std::string default_id            = "615557989097-i93d4d1ojpen0m0dso18ldr6orjkidgf.apps.googleusercontent.com" ;
+diff --color -ur grive2-0.5.1.orig/libgrive/src/base/Drive.cc grive2-0.5.1/libgrive/src/base/Drive.cc
+--- grive2-0.5.1.orig/libgrive/src/base/Drive.cc	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/libgrive/src/base/Drive.cc	2023-01-19 13:52:49.973691450 +0100
+@@ -35,6 +35,7 @@
+ #include <cstdlib>
+ #include <fstream>
+ #include <map>
++#include <memory>
+ 
+ // for debugging only
+ #include <iostream>
+diff --color -ur grive2-0.5.1.orig/libgrive/src/base/Syncer.hh grive2-0.5.1/libgrive/src/base/Syncer.hh
+--- grive2-0.5.1.orig/libgrive/src/base/Syncer.hh	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/libgrive/src/base/Syncer.hh	2023-01-19 13:52:43.540553516 +0100
+@@ -21,6 +21,7 @@
+ 
+ #include "util/FileSystem.hh"
+ 
++#include <memory>
+ #include <string>
+ #include <vector>
+ #include <iosfwd>
+diff --color -ur grive2-0.5.1.orig/libgrive/src/drive2/Syncer2.cc grive2-0.5.1/libgrive/src/drive2/Syncer2.cc
+--- grive2-0.5.1.orig/libgrive/src/drive2/Syncer2.cc	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/libgrive/src/drive2/Syncer2.cc	2023-01-19 13:52:33.240866356 +0100
+@@ -38,6 +38,7 @@
+ #include <boost/exception/all.hpp>
+ 
+ #include <cassert>
++#include <memory>
+ 
+ // for debugging
+ #include <iostream>
+diff --color -ur grive2-0.5.1.orig/libgrive/src/drive2/Syncer2.hh grive2-0.5.1/libgrive/src/drive2/Syncer2.hh
+--- grive2-0.5.1.orig/libgrive/src/drive2/Syncer2.hh	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/libgrive/src/drive2/Syncer2.hh	2023-01-19 13:52:38.774031627 +0100
+@@ -20,6 +20,7 @@
+ #pragma once
+ 
+ #include "base/Syncer.hh"
++#include <memory>
+ 
+ namespace gr {
+ 
+diff --color -ur grive2-0.5.1.orig/libgrive/src/http/Download.hh grive2-0.5.1/libgrive/src/http/Download.hh
+--- grive2-0.5.1.orig/libgrive/src/http/Download.hh	2019-11-12 23:05:31.000000000 +0100
++++ grive2-0.5.1/libgrive/src/http/Download.hh	2023-01-19 13:53:18.249499269 +0100
+@@ -21,6 +21,7 @@
+ 
+ #include "util/File.hh"
+ 
++#include <memory>
+ #include <string>
+ 
+ namespace gr {
