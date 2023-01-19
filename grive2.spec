@@ -20,6 +20,7 @@ BuildRequires:	libgcrypt-devel
 BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.682
 BuildRequires:	yajl-devel
 Obsoletes:	grive < 0.3.0-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
