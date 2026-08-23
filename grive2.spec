@@ -1,25 +1,22 @@
 Summary:	An open source Linux client for Google Drive
 Summary(pl.UTF-8):	Linuksowy, mające otwarte źródła klient Google Drive
 Name:		grive2
-Version:	0.5.1
-Release:	23
+Version:	0.5.3
+Release:	1
 License:	GPL v2
 Group:		Applications/Networking
 #Source0Download: https://github.com/vitalif/grive2/releases
 Source0:	https://github.com/vitalif/grive2/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	2ffb02ae2ddaba51fc8f31bb322efd93
-Patch0:		binutils-2.34.patch
-Patch1:		missing-includes.patch
-Patch2:		libgcrypt1.10.patch
+# Source0-md5:	583b463b6f9cc561dc1abf0373916f5c
+Patch0:		missing-includes.patch
+Patch1:		libgcrypt1.10.patch
 URL:		https://github.com/vitalif/grive2
 BuildRequires:	binutils-devel
 BuildRequires:	boost-devel >= 1.40.0
 BuildRequires:	cmake >= 2.8
 BuildRequires:	curl-devel
-BuildRequires:	expat-devel
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libstdc++-devel >= 6:4.7
-BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.682
 BuildRequires:	yajl-devel
@@ -40,12 +37,12 @@ Google Document List.
 %setup -q
 %patch -P0 -p1
 %patch -P1 -p1
-%patch -P2 -p1
 
 %build
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	-DHAVE_SYSTEMD=1
 
 %{__make}
 
@@ -62,8 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %{_bindir}/grive
-%dir %{_prefix}/lib/grive
-%attr(755,root,root) %{_prefix}/lib/grive/grive-sync.sh
+%dir %{_libexecdir}/grive
+%attr(755,root,root) %{_libexecdir}/grive/grive-sync.sh
+%{systemduserunitdir}/grive@.service
 %{systemduserunitdir}/grive-changes@.service
 %{systemduserunitdir}/grive-timer@.service
 %{systemduserunitdir}/grive-timer@.timer
